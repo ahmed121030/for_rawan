@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى روان ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffeef2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* صفحة الباسورد */
+        #login-page {
+            text-align: center;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
+            width: 320px;
+            z-index: 1001;
+            position: relative;
+        }
+
+        h2 { color: #d63384; margin-bottom: 10px; }
+        
+        input {
+            width: 85%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: #d63384; box-shadow: 0 0 10px rgba(214, 51, 132, 0.1); }
+
+        button {
+            background: linear-gradient(45deg, #d63384, #ff4d94);
+            color: white;
+            border: none;
+            padding: 12px 45px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+        }
+        button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 8px 20px rgba(214, 51, 132, 0.4); }
+
+        /* المحتوى الرئيسي */
+        #main-content {
+            display: none;
+            width: 95%;
+            max-width: 550px;
+            text-align: center;
+            padding: 20px;
+            animation: fadeInPage 2s ease-in-out;
+        }
+
+        @keyframes fadeInPage { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .heart-box {
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid #fff0f5;
+        }
+
+        /* العداد */
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .timer div { font-size: 13px; color: #d63384; font-weight: bold; }
+        .timer span {
+            display: block;
+            font-size: 24px;
+            color: white;
+            background: #d63384;
+            padding: 10px;
+            border-radius: 12px;
+            min-width: 55px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 10px rgba(214, 51, 132, 0.2);
+        }
+
+        /* الجاليري */
+        .photo-gallery img {
+            width: 100%;
+            border-radius: 20px;
+            margin-top: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: 0.5s;
+            object-fit: cover;
+        }
+        .photo-gallery img:hover { transform: scale(1.03); }
+
+        /* القلوب المتساقطة */
+        .heart-particle {
+            position: fixed;
+            top: -10%;
+            user-select: none;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        /* مشغل الموسيقى */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-page">
+        <div style="font-size: 65px; margin-bottom: 10px;">💖</div>
+        <h2>يلا بينا </h2>
+        <p>كل اللي بينا هنا محفوظ في قلبي ✨</p>
+        <input type="password" id="passInput" placeholder="اكتبي كلمة السر (2010/7/9)">
+        <br>
+        <button onclick="checkPass()">افتحي قلبي 🔓</button>
+    </div>
+
+    <div id="main-content">
+        
+        <div class="heart-box">
+            <h2>ينور عيني (روان) ✨</h2>
+            <p>بحبك بكل حاجة في حياتي.. تعال نفكر كل حاجة بينا</p>
+            <div class="photo-gallery">
+                <img src="image_0.png" alt="Our Moment">
+            </div>
+        </div>
+
+        <div class="heart-box">
+            <h3>أحلى أيام حياتي بدأت من:</h3>
+            <div class="timer" id="timer">
+                <div><span id="days">0</span> يوم</div>
+                <div><span id="hours">0</span> ساعة</div>
+                <div><span id="minutes">0</span> دقيقة</div>
+                <div><span id="seconds">0</span> ثانية</div>
+            </div>
+            <p>كل لحظة جنبك هي مكسب حقيقي ليا ❤️</p>
+        </div>
+
+        <div class="heart-box photo-gallery">
+            <h3>ذكرياتنا سوا 📸</h3>
+            <img src="image_3.png" alt="Memory 2">
+            <img src="image_2.png" alt="Memory 3" style="margin-top: 25px;">
+        </div>
+
+        <div class="heart-box photo-gallery">
+            <h3>أجمل ضحكة في الدنيا 😍</h3>
+            <img src="image_1.png" alt="Memory 4">
+        </div>
+
+        <div class="heart-box">
+            <h3>وعدي ليكي 💍</h3>
+            <p>هفضل سندك وضهرك، وربنا يبارك لي فيكي ويجمعنا على خير يا رب.</p>
+            <div class="photo-gallery">
+                <img src="image_4.png" alt="Our Future">
+            </div>
+        </div>
+
+        <p style="color: #d63384; font-weight: bold; margin-bottom: 50px;">بحبك يا روان "يا روان أنتي النور اللي نوّر دنيتي والضحكة اللي بتطمن قلبي.. أوعدك إني هفضل جنبك ومعاكي في كل خطوة، فخليكي دايماً جنبي ومعايا لأن حياتي من غيرك مابقتش حياة.. بحبك ومقدرش أبعد عنك أبداً." ❤️</p>
+    </div>
+
+    <audio id="loveSong" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            if (pass.toLowerCase() === "2010/7/9") {
+                document.getElementById('login-page').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                
+                const audio = document.getElementById('loveSong');
+                audio.play().catch(e => console.log("المتصفح منع التشغيل التلقائي"));
+                
+                startTimer();
+                createHearts();
+            } else {
+                alert("كلمة السر غلط يا جميلة! حاولي تاني ❤️");
+            }
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-particle');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.style.opacity = Math.random();
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+
+        function startTimer() {
+            // غير التاريخ ليوم لقاءكم (سنة، شهر-1، يوم)
+            const startDate = new Date(2025, 10, 0, 0, 0, 0).getTime(); 
+
+            setInterval(function() {
+                const now = new Date().getTime();
+                const diff = now - startDate;
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = d;
+                document.getElementById("hours").innerHTML = h;
+                document.getElementById("minutes").innerHTML = m;
+                document.getElementById("seconds").innerHTML = s;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
